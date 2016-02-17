@@ -1,0 +1,7 @@
+.form-control[disabled] {
+	border: none;
+	background: none;
+	box-shadow: none;
+	resize: none;
+	cursor: default;
+}
