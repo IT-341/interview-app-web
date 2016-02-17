@@ -5,7 +5,7 @@ use Cake\Network\Http\Client;
 
 class QuestionsController extends AppController
 {
-    public function view()
+    public function index()
     {
     	$http = new Client();
 

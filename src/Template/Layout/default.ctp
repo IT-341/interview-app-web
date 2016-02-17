@@ -60,7 +60,7 @@
                         <li>
                             <a href="<?php echo $this->Url->build([
                                 "controller" => "Questions",
-                                "action" => "view"
+                                "action" => "index"
                             ]); ?>"><i class="fa fa-question-circle fa-fw"></i> Questions</a>
                         </li>
                     </ul>
