@@ -32,9 +32,11 @@
 <?= $this->Html->script('dataTables.bootstrap.min') ?>
 
 <script>
-	$(document).ready(function() {
-	    $('#dataTablesQuestions').DataTable({
-	            responsive: true
-	    });
-	});
+$(document).ready(function()
+{
+    $('#dataTablesQuestions').DataTable(
+    {
+        responsive: true
+    });
+});
 </script>

@@ -57,13 +57,13 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="<?php echo $this->Url->build([
+                            <a href="<?= $this->Url->build([
                                 "controller" => "Pages",
                                 "action" => "dashboard"
                             ]); ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="<?php echo $this->Url->build([
+                            <a href="<?= $this->Url->build([
                                 "controller" => "Questions",
                                 "action" => "index"
                             ]); ?>"><i class="fa fa-question-circle fa-fw"></i> Questions</a>
