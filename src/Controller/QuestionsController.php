@@ -5,8 +5,8 @@ class QuestionsController extends AppController
 {
     public function index()
     {
-    	$response = $this->http->get('http://interview-app-server.herokuapp.com/api/question/');
+    	$response = $this->http->get('http://interview-app-server.herokuapp.com/api/question/?select=question%20answer');
 
-    	$this->set(['users' => $response->body('json_decode')]);
+    	$this->set(['questions' => $response->body('json_decode')]);
     }
 }

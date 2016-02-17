@@ -16,10 +16,10 @@ class UsersController extends AppController
     }
 
     // GET     /users          index   page to list all users
-    // GET     /users/1        show    page to show user with id 1
+    // GET     /users/:id      show    page to show user with id :id
     // GET     /users/new      new     page to make a new user
     // POST    /users          create  create a new user
-    // GET     /users/1/edit   edit    page to edit user with id 1
-    // PATCH   /users/1        update  update user with id 1
-    // DELETE  /users/1        destroy delete user with id 1
+    // GET     /users/:id/edit edit    page to edit user with id :id
+    // PATCH   /users/:id      update  update user with id :id
+    // DELETE  /users/:id      destroy delete user with id :id
 }

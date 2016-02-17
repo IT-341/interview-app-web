@@ -21,6 +21,11 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <?= $this->Html->script('jquery.min') ?>
+    <?= $this->Html->script('bootstrap.min') ?>
+    <?= $this->Html->script('metisMenu.min') ?>
+    <?= $this->Html->script('sb-admin-2') ?>
+
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
@@ -78,11 +83,6 @@
 
     </div>
     <!-- /#wrapper -->
-
-    <?= $this->Html->script('jquery.min') ?>
-    <?= $this->Html->script('bootstrap.min') ?>
-    <?= $this->Html->script('metisMenu.min') ?>
-    <?= $this->Html->script('sb-admin-2') ?>
 
 </body>
 </html>
