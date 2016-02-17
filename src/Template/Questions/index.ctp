@@ -7,7 +7,7 @@
 </div>
 <div class="row">
 	<div class="dataTable_wrapper">
-	    <table class="table table-bordered table-hover" id="dataTablesQuestions">
+	    <table class="table table-bordered table-hover" id="tableQuestions">
 	        <thead>
 	            <tr>
 	                <th>#</th>
@@ -17,7 +17,10 @@
 	        </thead>
 	        <tbody>
 	        	<?php foreach ($questions as $key => $question): ?>
-	        	<tr>
+	        	<tr data-href="<?= $this->Url->build([
+                    "action" => "show",
+                    $question->_id
+                ]); ?>">
 	        		<td align="center"><?= $key + 1 ?></td>
 	        		<td><?= $this->Text->truncate($question->question, 50) ?></td>
 	        		<td><?= $this->Text->truncate($question->answer, 50) ?></td>
@@ -30,13 +33,4 @@
 
 <?= $this->Html->script('jquery.dataTables.min') ?>
 <?= $this->Html->script('dataTables.bootstrap.min') ?>
-
-<script>
-$(document).ready(function()
-{
-    $('#dataTablesQuestions').DataTable(
-    {
-        responsive: true
-    });
-});
-</script>
+<?= $this->Html->script('questions/questions-index') ?>
