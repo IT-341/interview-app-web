@@ -1,4 +1,4 @@
-<?= $this->Html->css('dataTables.bootstrap') ?>
+<?= $this->Html->css('dataTables.bootstrap', ['block' => true]) ?>
 
 <div class="row">
     <div class="col-lg-12">
@@ -31,6 +31,6 @@
 	</div>
 </div>
 
-<?= $this->Html->script('jquery.dataTables.min') ?>
-<?= $this->Html->script('dataTables.bootstrap.min') ?>
-<?= $this->Html->script('questions/questions-index') ?>
+<?= $this->Html->script('jquery.dataTables.min', ['block' => true]) ?>
+<?= $this->Html->script('dataTables.bootstrap.min', ['block' => true]) ?>
+<?= $this->Html->script('questions/questions-index', ['block' => true]) ?>
