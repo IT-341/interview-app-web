@@ -16,6 +16,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\Network\Http\Client;
 
 /**
  * Application Controller
@@ -27,6 +28,10 @@ use Cake\Event\Event;
  */
 class AppController extends Controller
 {
+    /**
+     * HTTP client which can be used for making requests.
+     */
+    protected $http;
 
     /**
      * Initialization hook method.
@@ -43,12 +48,8 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-        // $this->loadComponent('Auth', [
-        //     'loginAction' => [
-        //         'controller' => 'Users',
-        //         'action' => 'login'
-        //     ]
-        // ]);
+
+        $this->http = new Client();
     }
 
     /**

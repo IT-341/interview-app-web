@@ -1,8 +1,6 @@
 <?php
 namespace App\Controller;
 
-use Cake\Network\Http\Client;
-
 class UsersController extends AppController
 {
     public function login()
@@ -12,9 +10,7 @@ class UsersController extends AppController
 
     public function index()
     {
-        $http = new Client();
-
-        $response = $http->get('http://interview-app-server.herokuapp.com/api/user/');
+        $response = $this->http->get('http://interview-app-server.herokuapp.com/api/user/');
 
         $this->set(['users' => $response->body('json_decode')]);
     }
