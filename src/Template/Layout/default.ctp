@@ -13,6 +13,7 @@
     <?= $this->Html->css('metisMenu.min') ?>
     <?= $this->Html->css('sb-admin-2') ?>
     <?= $this->Html->css('font-awesome.min') ?>
+    <?= $this->Html->css('styles') ?>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,7 +37,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">JIPA</a>
+                <a class="navbar-brand" href="#">JIPA - Control Panel</a>
             </div>
             <!-- /.navbar-header -->
 
