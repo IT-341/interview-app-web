@@ -72,6 +72,7 @@
 
         <!-- Page Content -->
         <div id="page-wrapper">
+            <?= $this->Flash->render() ?>
             <?= $this->fetch('content') ?>
         </div>
         <!-- /#page-wrapper -->
