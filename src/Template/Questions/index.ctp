@@ -19,8 +19,8 @@
 	        	<?php foreach ($questions as $key => $question): ?>
 	        	<tr>
 	        		<td><?= $key + 1 ?></td>
-	        		<td><?= $this->Text->truncate($question->question, 80) ?></td>
-	        		<td><?= $this->Text->truncate($question->answer, 80) ?></td>
+	        		<td><?= $this->Text->truncate($question->question, 50) ?></td>
+	        		<td><?= $this->Text->truncate($question->answer, 50) ?></td>
 	        	</tr>
 				<?php endforeach; ?>
 	        </tbody>
