@@ -16,6 +16,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\Network\Http\Client;
 
 /**
  * Application Controller
@@ -27,6 +28,10 @@ use Cake\Event\Event;
  */
 class AppController extends Controller
 {
+    /**
+     * HTTP client which can be used for making requests.
+     */
+    protected $http;
 
     /**
      * Initialization hook method.
@@ -43,26 +48,7 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-        $this->loadComponent('Auth', [
-            'loginAction' => [
-                'controller' => 'Users',
-                'action' => 'login'
-            ]
-        ]);
-    }
 
-    /**
-     * Before render callback.
-     *
-     * @param \Cake\Event\Event $event The beforeRender event.
-     * @return void
-     */
-    public function beforeRender(Event $event)
-    {
-        if (!array_key_exists('_serialize', $this->viewVars) &&
-            in_array($this->response->type(), ['application/json', 'application/xml'])
-        ) {
-            $this->set('_serialize', true);
-        }
+        $this->http = new Client();
     }
 }
