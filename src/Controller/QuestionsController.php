@@ -10,6 +10,28 @@ class QuestionsController extends AppController
     	$this->set(['questions' => $response->body('json_decode')]);
     }
 
+    public function add() {}
+
+    public function create()
+    {
+        $response = $this->http->post(
+            'http://interview-app-server.herokuapp.com/api/question/',
+            [
+                'question' => $this->request->data['question'],
+                'answer'   => $this->request->data['answer']
+            ],
+            ['headers' => ['Content-Type' => 'x-www-form-urlencoded']]
+        );
+
+        if ($response->code == '201') {
+            $this->Flash->success('Question created.');
+            return $this->redirect(['action' => 'index']);
+        }
+
+        $this->Flash->error('Failed to create your question.');
+        return $this->redirect(['action' => 'index']);
+    }
+
     public function show($id = null)
     {
         $response = $this->http->get('http://interview-app-server.herokuapp.com/api/question/' . $id);
@@ -29,11 +51,24 @@ class QuestionsController extends AppController
         );
 
         if ($response->isOk()) {
-            $this->Flash->success('Question updated successfully!');
-        } else {
-            $this->Flash->error('Question update failed.');
+            $this->Flash->success('Question updated.');
+            return $this->redirect(['action' => 'show', $id]);
         }
 
+        $this->Flash->error('Failed to update your question.');
         return $this->redirect(['action' => 'show', $id]);
+    }
+
+    public function delete($id = null)
+    {
+        $response = $this->http->delete('http://interview-app-server.herokuapp.com/api/question/' . $id);
+
+        if ($response->isOk() || $response->code == '204') {
+            $this->Flash->success('Question deleted.');
+            return $this->redirect(['action' => 'index']);
+        }
+
+        $this->Flash->error('Failed to delete your question.');
+        return $this->redirect(['action' => 'index']);
     }
 }

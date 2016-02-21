@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Question</h1>
+        <h1 class="page-header">Show/Edit Question</h1>
     </div>
 </div>
 <div class="row">
