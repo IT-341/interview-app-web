@@ -14,6 +14,10 @@ class QuestionsController extends AppController
 
     public function create()
     {
+        if (!$this->request->is('post')) {
+            return $this->redirect(['action' => 'index']);
+        }
+
         $response = $this->http->post(
             'http://interview-app-server.herokuapp.com/api/question/',
             [
@@ -34,6 +38,10 @@ class QuestionsController extends AppController
 
     public function show($id = null)
     {
+        if ($id == null) {
+            return $this->redirect(['action' => 'index']);
+        }
+
         $response = $this->http->get('http://interview-app-server.herokuapp.com/api/question/' . $id);
 
         $this->set(['question' => $response->body('json_decode')]);
@@ -41,6 +49,10 @@ class QuestionsController extends AppController
 
     public function update($id = null)
     {
+        if ($id == null || !$this->request->is('post')) {
+            return $this->redirect(['action' => 'index']);
+        }
+
         $response = $this->http->put(
             'http://interview-app-server.herokuapp.com/api/question/' . $id,
             [
@@ -61,6 +73,10 @@ class QuestionsController extends AppController
 
     public function delete($id = null)
     {
+        if ($id == null || !$this->request->is('post')) {
+            return $this->redirect(['action' => 'index']);
+        }
+
         $response = $this->http->delete('http://interview-app-server.herokuapp.com/api/question/' . $id);
 
         if ($response->isOk() || $response->code == '204') {

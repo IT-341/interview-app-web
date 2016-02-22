@@ -36,6 +36,10 @@ class UsersController extends AppController
 
     public function show($id = null)
     {
+        if ($id == null) {
+            return $this->redirect(['action' => 'index']);
+        }
+
         $response = $this->http->get('http://interview-app-server.herokuapp.com/api/user/' . $id);
 
         $this->set(['user' => $response->body('json_decode')]);
@@ -43,6 +47,10 @@ class UsersController extends AppController
 
     public function update($id = null)
     {
+        if ($id == null || !$this->request->is('post')) {
+            return $this->redirect(['action' => 'index']);
+        }
+
         $response = $this->http->put(
             'http://interview-app-server.herokuapp.com/api/user/' . $id,
             [
@@ -65,6 +73,10 @@ class UsersController extends AppController
 
     public function delete($id = null)
     {
+        if ($id == null || !$this->request->is('post')) {
+            return $this->redirect(['action' => 'index']);
+        }
+
         $response = $this->http->delete('http://interview-app-server.herokuapp.com/api/user/' . $id);
 
         if ($response->isOk() || $response->code == '204') {
