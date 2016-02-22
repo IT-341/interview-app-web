@@ -57,6 +57,12 @@
                                 "action" => "index"
                             ]); ?>"><i class="fa fa-question-circle fa-fw"></i> Questions</a>
                         </li>
+                        <li>
+                            <a href="<?= $this->Url->build([
+                                "controller" => "Users",
+                                "action" => "index"
+                            ]); ?>"><i class="fa fa-question-circle fa-fw"></i> Users</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

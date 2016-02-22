@@ -28,7 +28,7 @@ class QuestionsController extends AppController
             return $this->redirect(['action' => 'index']);
         }
 
-        $this->Flash->error('Failed to create your question.');
+        $this->Flash->error('Failed to create the question.');
         return $this->redirect(['action' => 'index']);
     }
 
@@ -55,7 +55,7 @@ class QuestionsController extends AppController
             return $this->redirect(['action' => 'show', $id]);
         }
 
-        $this->Flash->error('Failed to update your question.');
+        $this->Flash->error('Failed to update the question.');
         return $this->redirect(['action' => 'show', $id]);
     }
 
@@ -68,7 +68,7 @@ class QuestionsController extends AppController
             return $this->redirect(['action' => 'index']);
         }
 
-        $this->Flash->error('Failed to delete your question.');
+        $this->Flash->error('Failed to delete the question.');
         return $this->redirect(['action' => 'index']);
     }
 }
