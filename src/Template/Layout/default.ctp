@@ -53,15 +53,15 @@
                     <ul class="nav" id="side-menu">
                         <li>
                             <a href="<?= $this->Url->build([
-                                "controller" => "Questions",
+                                "controller" => "Users",
                                 "action" => "index"
-                            ]); ?>"><i class="fa fa-question-circle fa-fw"></i> Questions</a>
+                            ]); ?>"><i class="fa fa-users fa-fw"></i> Users</a>
                         </li>
                         <li>
                             <a href="<?= $this->Url->build([
-                                "controller" => "Users",
+                                "controller" => "Questions",
                                 "action" => "index"
-                            ]); ?>"><i class="fa fa-question-circle fa-fw"></i> Users</a>
+                            ]); ?>"><i class="fa fa-question-circle fa-fw"></i> Questions</a>
                         </li>
                     </ul>
                 </div>
