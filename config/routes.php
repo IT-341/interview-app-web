@@ -44,6 +44,8 @@ Router::defaultRouteClass('DashedRoute');
 Router::scope('/', function ($routes) {
 
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'dashboard']);
+    $routes->connect('/login', ['controller' => 'Users', 'action' => 'login']);
+    $routes->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
 
     /**
      * Connect catchall routes for all controllers.
