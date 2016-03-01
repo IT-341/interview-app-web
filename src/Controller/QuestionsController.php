@@ -60,16 +60,12 @@ class QuestionsController extends AppController
             return $this->redirect(['action' => 'index']);
         }
 
-        $response = $this->http->put(
-            'http://interview-app-server.herokuapp.com/api/question/' . $id,
-            [
-                'question' => $this->request->data['question'],
-                'answer'   => $this->request->data['answer']
-            ],
-            ['headers' => ['Content-Type' => 'x-www-form-urlencoded']]
-        );
+        $response = $this->JIPAApi->put([
+            'resource' => 'question',
+            'id'       => $id,
+        ], $this->request->data);
 
-        if ($response->isOk()) {
+        if ($response) {
             $this->Flash->success('Question updated.');
             return $this->redirect(['action' => 'show', $id]);
         }

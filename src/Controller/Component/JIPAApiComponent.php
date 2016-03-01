@@ -39,6 +39,23 @@ class JIPAApiComponent extends Component
     }
 
     /**
+     * PUT request method.
+     *
+     * @param $config   Check buildUrl method for more details.
+     * @param $data     The data to be updated.
+     */
+    public function put(array $config = array(), array $data = array())
+    {
+        $response = $this->http->put(
+            $this->buildUrl($config),
+            $data,
+            ['headers' => ['Content-Type' => 'x-www-form-urlencoded']]
+        );
+
+        return $response->isOk();
+    }
+
+    /**
      * DELETE request method.
      *
      * @param $config   Check buildUrl method for more details.

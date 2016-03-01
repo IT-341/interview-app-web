@@ -57,18 +57,12 @@ class UsersController extends AppController
             return $this->redirect(['action' => 'index']);
         }
 
-        $response = $this->http->put(
-            'http://interview-app-server.herokuapp.com/api/user/' . $id,
-            [
-                'username'  => $this->request->data['username'],
-                'firstname' => $this->request->data['firstname'],
-                'lastname'  => $this->request->data['lastname'],
-                'email'     => $this->request->data['email']
-            ],
-            ['headers' => ['Content-Type' => 'x-www-form-urlencoded']]
-        );
+        $response = $this->JIPAApi->put([
+            'resource' => 'user',
+            'id'       => $id,
+        ], $this->request->data);
 
-        if ($response->isOk()) {
+        if ($response) {
             $this->Flash->success('User updated.');
             return $this->redirect(['action' => 'show', $id]);
         }
