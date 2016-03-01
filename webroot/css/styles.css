@@ -10,3 +10,7 @@ textarea.form-control[disabled] {
 	border: 1px solid #ededed;
 	min-height: 200px;
 }
+
+tr.not-read {
+	font-weight: bold;
+}

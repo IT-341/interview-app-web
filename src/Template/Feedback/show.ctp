@@ -26,6 +26,12 @@
                 "action" => "delete",
                 $feedback->_id
             ]); ?>" id="btnDelete" class="btn btn-danger">Delete</a>
+            <?php if (!$feedback->done): ?>
+            <a href="<?= $this->Url->build([
+                "action" => "done",
+                $feedback->_id
+            ]); ?>" id="btnDelete" class="btn btn-info">Mark as Solved</a>
+            <?php endif; ?>
         </div>
     </form>
     <?php endif; ?>

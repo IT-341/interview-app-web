@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-sm-12">
         <h1 class="page-header">
-            Feedback
+            Feedback <?= (true) ? 'Done' : (false) ? 'Read' : 'Unread' ?>
         </h1>
     </div>
 </div>
@@ -13,6 +13,7 @@
             <tr>
                 <th>Description</th>
                 <th>User</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
@@ -20,9 +21,10 @@
             <tr data-href="<?= $this->Url->build([
                 "action" => "show",
                 $feed->_id
-            ]); ?>">
-                <td><?= $this->Text->truncate($feed->description, 120) ?></td>
+            ]); ?>" <?= ($feed->read) ? '' : 'class="not-read"' ?> >
+                <td><?= $this->Text->truncate($feed->description, 100) ?></td>
                 <td><?= $feed->user->firstname . ' ' . $feed->user->lastname ?></td>
+                <td><?= $feed->done ? 'Solved' : ($feed->read ? 'Read' : 'Unread') ?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>

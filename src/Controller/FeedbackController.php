@@ -7,7 +7,7 @@ class FeedbackController extends AppController
     {
         $feedback = $this->JIPAApi->get([
             'resource' => 'feedback',
-            'select'   => ['description', 'user'],
+            'select'   => ['description', 'user', 'read', 'done'],
             'populate' => 'user'
         ]);
 
@@ -20,6 +20,12 @@ class FeedbackController extends AppController
             return $this->redirect(['action' => 'index']);
         }
 
+        // Mark feedback as read
+        $response = $this->JIPAApi->put([
+            'resource' => 'feedback',
+            'id'       => $id,
+        ], ['read' => true]);
+
         $feedback = $this->JIPAApi->get([
             'resource' => 'feedback',
             'id'       => $id,
@@ -27,6 +33,26 @@ class FeedbackController extends AppController
         ]);
 
         $this->set(['feedback' => $feedback]);
+    }
+
+    public function done($id = null)
+    {
+        if ($id == null) {
+            return $this->redirect(['action' => 'index']);
+        }
+
+        $response = $this->JIPAApi->put([
+            'resource' => 'feedback',
+            'id'       => $id,
+        ], ['done' => true]);
+
+        if ($response) {
+            $this->Flash->success('Feedback marked as solved.');
+            return $this->redirect(['action' => 'show', $id]);
+        }
+
+        $this->Flash->error('Failed to mark feedback as solved.');
+        return $this->redirect(['action' => 'show', $id]);
     }
 
     public function delete($id = null)
