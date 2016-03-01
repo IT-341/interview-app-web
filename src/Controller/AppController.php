@@ -16,7 +16,6 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
-use Cake\Network\Http\Client;
 
 /**
  * Application Controller
@@ -28,11 +27,6 @@ use Cake\Network\Http\Client;
  */
 class AppController extends Controller
 {
-    /**
-     * HTTP client which can be used for making requests.
-     */
-    protected $http;
-
     /**
      * Initialization hook method.
      *
@@ -46,6 +40,7 @@ class AppController extends Controller
     {
         parent::initialize();
 
+        $this->loadComponent('JIPAApi');
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
@@ -53,7 +48,5 @@ class AppController extends Controller
                 'Form'
             ]
         ]);
-
-        $this->http = new Client();
     }
 }

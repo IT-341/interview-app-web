@@ -29,9 +29,12 @@ class UsersController extends AppController
 
     public function index()
     {
-        $response = $this->http->get('http://interview-app-server.herokuapp.com/api/user/');
+        $users = $this->JIPAApi->get([
+            'resource' => 'user',
+            'select'   => ['firstname', 'lastname', 'email', 'points']
+        ]);
 
-        $this->set(['users' => $response->body('json_decode')]);
+        $this->set(['users' => $users]);
     }
 
     public function show($id = null)
@@ -40,9 +43,12 @@ class UsersController extends AppController
             return $this->redirect(['action' => 'index']);
         }
 
-        $response = $this->http->get('http://interview-app-server.herokuapp.com/api/user/' . $id);
+        $user = $this->JIPAApi->get([
+            'resource' => 'user',
+            'id'       => $id
+        ]);
 
-        $this->set(['user' => $response->body('json_decode')]);
+        $this->set(['user' => $user]);
     }
 
     public function update($id = null)

@@ -5,9 +5,13 @@ class QuestionsController extends AppController
 {
     public function index()
     {
-    	$response = $this->http->get('http://interview-app-server.herokuapp.com/api/question/?select=question%20answer');
+        $questions = $this->JIPAApi->get([
+            'resource' => 'question',
+            'select'   => ['answer', 'question', 'keywords'],
+            'filter'   => ['quiz' => 'false']
+        ]);
 
-    	$this->set(['questions' => $response->body('json_decode')]);
+    	$this->set(['questions' => $questions]);
     }
 
     public function add() {}
@@ -42,9 +46,12 @@ class QuestionsController extends AppController
             return $this->redirect(['action' => 'index']);
         }
 
-        $response = $this->http->get('http://interview-app-server.herokuapp.com/api/question/' . $id);
+        $question = $this->JIPAApi->get([
+            'resource' => 'question',
+            'id'       => $id
+        ]);
 
-        $this->set(['question' => $response->body('json_decode')]);
+        $this->set(['question' => $question]);
     }
 
     public function update($id = null)
