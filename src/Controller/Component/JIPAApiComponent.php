@@ -38,6 +38,17 @@ class JIPAApiComponent extends Component
         return $response->body('json_decode');
     }
 
+    public function post(array $config = array(), array $data = array())
+    {
+        $response = $this->http->post(
+            $this->buildUrl($config),
+            $data,
+            ['headers' => ['Content-Type' => 'x-www-form-urlencoded']]
+        );
+
+        return $response->code == '201';
+    }
+
     /**
      * PUT request method.
      *
@@ -64,11 +75,7 @@ class JIPAApiComponent extends Component
     {
         $response = $this->http->delete($this->buildUrl($config));
 
-        if ($response->code == '204' || $response->isOk()) {
-            return true;
-        }
-
-        return false;
+        return $response->code == '204' || $response->isOk();
     }
 
     /**

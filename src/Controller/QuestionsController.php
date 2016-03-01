@@ -22,16 +22,11 @@ class QuestionsController extends AppController
             return $this->redirect(['action' => 'index']);
         }
 
-        $response = $this->http->post(
-            'http://interview-app-server.herokuapp.com/api/question/',
-            [
-                'question' => $this->request->data['question'],
-                'answer'   => $this->request->data['answer']
-            ],
-            ['headers' => ['Content-Type' => 'x-www-form-urlencoded']]
-        );
+        $response = $this->JIPAApi->post([
+            'resource' => 'question'
+        ], $this->request->data);
 
-        if ($response->code == '201') {
+        if ($response) {
             $this->Flash->success('Question created.');
             return $this->redirect(['action' => 'index']);
         }
