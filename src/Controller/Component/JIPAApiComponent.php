@@ -7,8 +7,14 @@ use Cake\Network\Exception\BadRequestException;
 
 class JIPAApiComponent extends Component
 {
+    /**
+     * The API url.
+     */
     private $apiUrl = 'http://jipa-server.herokuapp.com/api/';
 
+    /**
+     * The HTTP Client used to make the request to the API.
+     */
     private $http;
 
     public function initialize(array $config)
@@ -16,6 +22,15 @@ class JIPAApiComponent extends Component
         $this->http = new Client();
     }
 
+    /**
+     * Get request method.
+     *
+     * Parameters used are:
+     *     resource     [required]   the resource to look for
+     *     id           [optional]   the id of the resource you want
+     *     filter       [optional]   to filter the search
+     *     select       [optional]   to get only some attributes
+     */
     public function get(array $config = array())
     {
         $response = $this->http->get($this->buildUrl($config));
@@ -27,6 +42,9 @@ class JIPAApiComponent extends Component
         return $response->body('json_decode');
     }
 
+    /**
+     * Build the url based on the $config parameters.
+     */
     private function buildUrl(array $config)
     {
         if (!isset($config['resource'])) {
