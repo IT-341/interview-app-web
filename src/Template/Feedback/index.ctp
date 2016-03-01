@@ -11,7 +11,6 @@
     <table class="table table-bordered table-hover" id="dataTable">
         <thead>
             <tr>
-                <th>#</th>
                 <th>Description</th>
                 <th>User</th>
             </tr>
@@ -22,7 +21,6 @@
                 "action" => "show",
                 $feed->_id
             ]); ?>">
-                <td align="center"><?= $key + 1 ?></td>
                 <td><?= $this->Text->truncate($feed->description, 120) ?></td>
                 <td><?= $feed->user->firstname . ' ' . $feed->user->lastname ?></td>
             </tr>

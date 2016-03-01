@@ -14,7 +14,6 @@
     <table class="table table-bordered table-hover" id="dataTable">
         <thead>
             <tr>
-                <th>#</th>
                 <th>Question</th>
                 <th>Answer</th>
             </tr>
@@ -25,7 +24,6 @@
                 "action" => "show",
                 $question->_id
             ]); ?>">
-                <td align="center"><?= $key + 1 ?></td>
                 <td><?= $this->Text->truncate($question->question, 50) ?></td>
                 <td><?= $this->Text->truncate($question->answer, 50) ?></td>
             </tr>

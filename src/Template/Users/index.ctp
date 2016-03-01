@@ -9,7 +9,6 @@
     <table class="table table-bordered table-hover" id="dataTable">
         <thead>
             <tr>
-                <th>#</th>
                 <th>Name</th>
                 <th>E-mail</th>
                 <th>Points</th>
@@ -21,7 +20,6 @@
                 "action" => "show",
                 $user->_id
             ]); ?>">
-                <td align="center"><?= $key + 1 ?></td>
                 <td><?= $this->Text->truncate($user->firstname . ' ' . $user->lastname, 50) ?></td>
                 <td><?= $this->Text->truncate($user->email, 50) ?></td>
                 <td><?= $user->points ?></td>
