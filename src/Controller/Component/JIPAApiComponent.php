@@ -23,13 +23,9 @@ class JIPAApiComponent extends Component
     }
 
     /**
-     * Get request method.
+     * GET request method.
      *
-     * Parameters used are:
-     *     resource     [required]   the resource to look for
-     *     id           [optional]   the id of the resource you want
-     *     filter       [optional]   to filter the search
-     *     select       [optional]   to get only some attributes
+     * @param $config   Check buildUrl method for more details.
      */
     public function get(array $config = array())
     {
@@ -43,7 +39,29 @@ class JIPAApiComponent extends Component
     }
 
     /**
+     * DELETE request method.
+     *
+     * @param $config   Check buildUrl method for more details.
+     */
+    public function delete(array $config = array())
+    {
+        $response = $this->http->delete($this->buildUrl($config));
+
+        if ($response->code == '204' || $response->isOk()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Build the url based on the $config parameters.
+     *
+     * Parameters used are:
+     *     resource     [required]   the resource to look for
+     *     id           [optional]   the id of the resource you want
+     *     select       [optional]   to get only some attributes
+     *     filter       [optional]   to filter the search
      */
     private function buildUrl(array $config)
     {

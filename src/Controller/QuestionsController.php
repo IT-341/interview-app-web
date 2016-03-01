@@ -80,13 +80,16 @@ class QuestionsController extends AppController
 
     public function delete($id = null)
     {
-        if ($id == null || !$this->request->is('post')) {
+        if ($id == null) {
             return $this->redirect(['action' => 'index']);
         }
 
-        $response = $this->http->delete('http://interview-app-server.herokuapp.com/api/question/' . $id);
+        $response = $this->JIPAApi->delete([
+            'resource' => 'question',
+            'id'       => $id
+        ]);
 
-        if ($response->isOk() || $response->code == '204') {
+        if ($response) {
             $this->Flash->success('Question deleted.');
             return $this->redirect(['action' => 'index']);
         }

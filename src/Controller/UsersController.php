@@ -79,13 +79,16 @@ class UsersController extends AppController
 
     public function delete($id = null)
     {
-        if ($id == null || !$this->request->is('post')) {
+        if ($id == null) {
             return $this->redirect(['action' => 'index']);
         }
 
-        $response = $this->http->delete('http://interview-app-server.herokuapp.com/api/user/' . $id);
+        $response = $this->JIPAApi->delete([
+            'resource' => 'user',
+            'id'       => $id
+        ]);
 
-        if ($response->isOk() || $response->code == '204') {
+        if ($response) {
             $this->Flash->success('User deleted.');
             return $this->redirect(['action' => 'index']);
         }
