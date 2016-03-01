@@ -16,10 +16,13 @@ class JIPAApiComponent extends Component
         $this->http = new Client();
     }
 
-
     public function get(array $config = array())
     {
         $response = $this->http->get($this->buildUrl($config));
+
+        if ($response->code == '404') {
+            return null;
+        }
 
         return $response->body('json_decode');
     }

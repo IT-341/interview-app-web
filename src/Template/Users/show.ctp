@@ -4,6 +4,9 @@
     </div>
 </div>
 <div class="row">
+    <?php if ($user == null): ?>
+    <p class="text-danger">User not found!</p>
+    <?php else: ?>
     <form role="form" method="post" action="<?= $this->Url->build([
         "action" => "update",
         $user->_id
@@ -32,6 +35,7 @@
             <button type="submit" id="btnSave" class="btn btn-primary">Save</button>
         </div>
     </form>
+    <?php endif; ?>
 </div>
 
 <?= $this->Html->script('buttons-handlers', ['block' => true]) ?>
