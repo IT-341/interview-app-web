@@ -5,3 +5,8 @@
 	resize: none;
 	cursor: default;
 }
+
+textarea.form-control[disabled] {
+	border: 1px solid #ededed;
+	min-height: 200px;
+}

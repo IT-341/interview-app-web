@@ -86,6 +86,7 @@ class JIPAApiComponent extends Component
      *     id           [optional]   the id of the resource you want
      *     select       [optional]   to get only some attributes
      *     filter       [optional]   to filter the search
+     *     populate     [optional]   populate the relationship
      */
     private function buildUrl(array $config)
     {
@@ -96,11 +97,13 @@ class JIPAApiComponent extends Component
         $url = $this->apiUrl . $config['resource'] . '/';
 
         if (isset($config['id'])) {
-            return $url . $config['id'];
+            $url .= $config['id'];
         }
 
+        $url .= '?';
+
         if (isset($config['select'])) {
-            $url .= '?select=';
+            $url .= 'select=';
 
             foreach ($config['select'] as $key => $value) {
                 if ($key != 0) {
@@ -109,16 +112,20 @@ class JIPAApiComponent extends Component
 
                 $url .= $value;
             }
+
+            $url .= '&';
         }
 
         if (isset($config['filter'])) {
             foreach ($config['filter'] as $key => $value) {
-                if (substr($url, -1) != '&') {
-                    $url .= '&';
-                }
-
                 $url .= $key . '=' . $value;
             }
+
+            $url .= '&';
+        }
+
+        if (isset($config['populate'])) {
+            $url .= 'populate=' . $config['populate'];
         }
 
         return $url;
