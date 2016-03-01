@@ -72,6 +72,12 @@
                                 "action" => "index"
                             ]); ?>"><i class="fa fa-comments fa-fw"></i> Feedback</a>
                         </li>
+                        <li>
+                            <a href="<?= $this->Url->build([
+                                "controller" => "Keywords",
+                                "action" => "index"
+                            ]); ?>"><i class="fa fa-tags fa-fw"></i> Keywords</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
