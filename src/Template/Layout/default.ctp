@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?= $this->fetch('title') ?>
+        JIPA - <?= $this->fetch('title') ?>
     </title>
     <?= $this->Html->meta('icon') ?>
 
@@ -43,7 +43,10 @@
 
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    <a href="<?= $this->Url->build([
+                        "controller" => "Users",
+                        "action" => "logout"
+                    ]); ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>
             </ul>
             <!-- /.navbar-top-links -->
@@ -51,6 +54,12 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="<?= $this->Url->build([
+                                "controller" => "Users",
+                                "action" => "index"
+                            ]); ?>"><i class="fa fa-users fa-fw"></i> Users</a>
+                        </li>
                         <li>
                             <a href="<?= $this->Url->build([
                                 "controller" => "Questions",

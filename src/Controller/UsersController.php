@@ -1,25 +1,93 @@
 <?php
 namespace App\Controller;
 
+use Cake\Core\Configure;
+
 class UsersController extends AppController
 {
     public function login()
     {
+        if ($this->request->is('post')) {
+            $config = Configure::read('SimpleAuth');
 
+            if ($config['username'] == $this->request->data['username']
+                && $config['password'] == $this->request->data['password']) {
+                $this->Auth->setUser(['username' => 'admin']);
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+
+            $this->Flash->loginError('Username or password is incorrect');
+        }
+
+        $this->viewBuilder()->layout(false);
+    }
+
+    public function logout()
+    {
+        return $this->redirect($this->Auth->logout());
     }
 
     public function index()
     {
-        $response = $this->http->get('http://interview-app-server.herokuapp.com/api/user/');
+        $users = $this->JIPAApi->get([
+            'resource' => 'user',
+            'select'   => ['firstname', 'lastname', 'email', 'points']
+        ]);
 
-        $this->set(['users' => $response->body('json_decode')]);
+        $this->set(['users' => $users]);
     }
 
-    // GET     /users          index   page to list all users
-    // GET     /users/:id      show    page to show user with id :id
-    // GET     /users/new      new     page to make a new user
-    // POST    /users          create  create a new user
-    // GET     /users/:id/edit edit    page to edit user with id :id
-    // PATCH   /users/:id      update  update user with id :id
-    // DELETE  /users/:id      destroy delete user with id :id
+    public function show($id = null)
+    {
+        if ($id == null) {
+            return $this->redirect(['action' => 'index']);
+        }
+
+        $user = $this->JIPAApi->get([
+            'resource' => 'user',
+            'id'       => $id
+        ]);
+
+        $this->set(['user' => $user]);
+    }
+
+    public function update($id = null)
+    {
+        if ($id == null || !$this->request->is('post')) {
+            return $this->redirect(['action' => 'index']);
+        }
+
+        $response = $this->JIPAApi->put([
+            'resource' => 'user',
+            'id'       => $id,
+        ], $this->request->data);
+
+        if ($response) {
+            $this->Flash->success('User updated.');
+            return $this->redirect(['action' => 'show', $id]);
+        }
+
+        $this->Flash->error('Failed to update the user.');
+        return $this->redirect(['action' => 'show', $id]);
+    }
+
+    public function delete($id = null)
+    {
+        if ($id == null) {
+            return $this->redirect(['action' => 'index']);
+        }
+
+        $response = $this->JIPAApi->delete([
+            'resource' => 'user',
+            'id'       => $id
+        ]);
+
+        if ($response) {
+            $this->Flash->success('User deleted.');
+            return $this->redirect(['action' => 'index']);
+        }
+
+        $this->Flash->error('Failed to delete the user.');
+        return $this->redirect(['action' => 'index']);
+    }
 }

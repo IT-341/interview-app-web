@@ -1,29 +1,33 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Show/Edit Question</h1>
+        <h1 class="page-header">Show/Edit User</h1>
     </div>
 </div>
 <div class="row">
-    <?php if ($question == null): ?>
-    <p class="text-danger">Question not found!</p>
+    <?php if ($user == null): ?>
+    <p class="text-danger">User not found!</p>
     <?php else: ?>
     <form role="form" method="post" action="<?= $this->Url->build([
         "action" => "update",
-        $question->_id
+        $user->_id
     ]); ?>">
         <div class="form-group">
-            <label class="control-label">Question</label>
-            <input type="text" name="question" class="form-control" disabled value="<?= $question->question ?>">
+            <label class="control-label">First name</label>
+            <input type="text" name="firstname" class="form-control" disabled value="<?= $user->firstname ?>">
         </div>
         <div class="form-group">
-            <label>Answer</label>
-            <textarea class="form-control" name="answer" rows="3" disabled><?= $question->answer ?></textarea>
+            <label class="control-label">Last name</label>
+            <input type="text" name="lastname" class="form-control" disabled value="<?= $user->lastname ?>">
+        </div>
+        <div class="form-group">
+            <label class="control-label">E-mail</label>
+            <input type="text" name="email" class="form-control" disabled value="<?= $user->email ?>">
         </div>
         <div class="show-buttons">
             <button type="button" id="btnEdit" class="btn btn-primary">Edit</button>
             <a href="<?= $this->Url->build([
                 "action" => "delete",
-                $question->_id
+                $user->_id
             ]); ?>" id="btnDelete" class="btn btn-danger">Delete</a>
         </div>
         <div class="edit-buttons" style="display: none;">

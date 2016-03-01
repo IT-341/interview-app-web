@@ -25,6 +25,6 @@ $(function() {
     });
 
     var element = $('ul.nav a').filter(function() {
-        return this.href == window.location.href;
+        return this.href == window.location.href || window.location.href.indexOf(this.href) != -1;
     }).addClass('active');
 });

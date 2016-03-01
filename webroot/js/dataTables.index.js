@@ -1,9 +1,9 @@
 $(document).ready(function() {
-    $('#tableQuestions').DataTable({
+    $('#dataTable').DataTable({
         responsive: true
     });
 
-    $('#tableQuestions tbody').on('click', 'tr', function () {
+    $('#dataTable tbody').on('click', 'tr', function () {
         window.location = $(this).data('href');
     });
 });

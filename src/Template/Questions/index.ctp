@@ -11,7 +11,7 @@
     </div>
 </div>
 <div class="row">
-    <table class="table table-bordered table-hover" id="tableQuestions">
+    <table class="table table-bordered table-hover" id="dataTable">
         <thead>
             <tr>
                 <th>#</th>
@@ -36,4 +36,4 @@
 
 <?= $this->Html->script('jquery.dataTables.min', ['block' => true]) ?>
 <?= $this->Html->script('dataTables.bootstrap.min', ['block' => true]) ?>
-<?= $this->Html->script('questions/questions-index', ['block' => true]) ?>
+<?= $this->Html->script('dataTables.index', ['block' => true]) ?>
