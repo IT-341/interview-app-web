@@ -70,7 +70,7 @@
                             <a href="<?= $this->Url->build([
                                 "controller" => "Feedback",
                                 "action" => "index"
-                            ]); ?>"><i class="fa fa-comment fa-fw"></i> Feedback</a>
+                            ]); ?>"><i class="fa fa-comments fa-fw"></i> Feedback</a>
                         </li>
                     </ul>
                 </div>
