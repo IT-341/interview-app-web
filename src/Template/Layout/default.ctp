@@ -68,6 +68,12 @@
                         </li>
                         <li>
                             <a href="<?= $this->Url->build([
+                                "controller" => "Quizzes",
+                                "action" => "index"
+                            ]); ?>"><i class="fa fa-puzzle-piece fa-fw"></i> Quizzes</a>
+                        </li>
+                        <li>
+                            <a href="<?= $this->Url->build([
                                 "controller" => "Feedback",
                                 "action" => "index"
                             ]); ?>"><i class="fa fa-comments fa-fw"></i> Feedback</a>
