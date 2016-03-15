@@ -2,27 +2,28 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <h1 class="page-header">Users</h1>
+        <h1 class="page-header">
+            Keywords
+            <span class="pull-right"><a href="<?= $this->Url->build([
+                "action" => "add"
+            ]); ?>" class="btn btn-success">New Keyword</a></span>
+        </h1>
     </div>
 </div>
 <div class="row">
     <table class="table table-bordered table-hover" id="dataTable">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>E-mail</th>
-                <th>Points</th>
+                <th>Keyword</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($users as $key => $user): ?>
+            <?php foreach ($keywords as $key => $keyword): ?>
             <tr data-href="<?= $this->Url->build([
                 "action" => "show",
-                $user->_id
+                $keyword->_id
             ]); ?>">
-                <td><?= $this->Text->truncate($user->firstname . ' ' . $user->lastname, 50) ?></td>
-                <td><?= $this->Text->truncate($user->email, 50) ?></td>
-                <td><?= $user->points ?></td>
+                <td><?= $keyword->name ?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>

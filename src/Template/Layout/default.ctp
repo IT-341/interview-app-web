@@ -66,6 +66,24 @@
                                 "action" => "index"
                             ]); ?>"><i class="fa fa-question-circle fa-fw"></i> Questions</a>
                         </li>
+                        <li>
+                            <a href="<?= $this->Url->build([
+                                "controller" => "Quizzes",
+                                "action" => "index"
+                            ]); ?>"><i class="fa fa-puzzle-piece fa-fw"></i> Quizzes</a>
+                        </li>
+                        <li>
+                            <a href="<?= $this->Url->build([
+                                "controller" => "Feedback",
+                                "action" => "index"
+                            ]); ?>"><i class="fa fa-comments fa-fw"></i> Feedback</a>
+                        </li>
+                        <li>
+                            <a href="<?= $this->Url->build([
+                                "controller" => "Keywords",
+                                "action" => "index"
+                            ]); ?>"><i class="fa fa-tags fa-fw"></i> Keywords</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

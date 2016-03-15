@@ -1,14 +1,14 @@
 <?php
 namespace App\Controller;
 
-class QuestionsController extends AppController
+class QuizzesController extends AppController
 {
     public function index()
     {
         $questions = $this->JIPAApi->get([
             'resource' => 'question',
             'select'   => ['answer', 'question', 'keywords'],
-            'filter'   => ['quiz' => 'false']
+            'filter'   => ['quiz' => 'true']
         ]);
 
     	$this->set(['questions' => $questions]);
@@ -22,18 +22,18 @@ class QuestionsController extends AppController
             return $this->redirect(['action' => 'index']);
         }
 
-        $this->request->data['quiz'] = 'false';
+        $this->request->data['quiz'] = true;
 
         $response = $this->JIPAApi->post([
             'resource' => 'question'
         ], $this->request->data);
 
         if ($response) {
-            $this->Flash->success('Question created.');
+            $this->Flash->success('Quiz created.');
             return $this->redirect(['action' => 'index']);
         }
 
-        $this->Flash->error('Failed to create the question.');
+        $this->Flash->error('Failed to create the quiz.');
         return $this->redirect(['action' => 'index']);
     }
 
@@ -63,11 +63,11 @@ class QuestionsController extends AppController
         ], $this->request->data);
 
         if ($response) {
-            $this->Flash->success('Question updated.');
+            $this->Flash->success('Quiz updated.');
             return $this->redirect(['action' => 'show', $id]);
         }
 
-        $this->Flash->error('Failed to update the question.');
+        $this->Flash->error('Failed to update the quiz.');
         return $this->redirect(['action' => 'show', $id]);
     }
 
@@ -83,11 +83,11 @@ class QuestionsController extends AppController
         ]);
 
         if ($response) {
-            $this->Flash->success('Question deleted.');
+            $this->Flash->success('Quiz deleted.');
             return $this->redirect(['action' => 'index']);
         }
 
-        $this->Flash->error('Failed to delete the question.');
+        $this->Flash->error('Failed to delete the quiz.');
         return $this->redirect(['action' => 'index']);
     }
 }

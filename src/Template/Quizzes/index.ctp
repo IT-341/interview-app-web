@@ -2,27 +2,30 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <h1 class="page-header">Users</h1>
+        <h1 class="page-header">
+            Quizzes
+            <span class="pull-right"><a href="<?= $this->Url->build([
+                "action" => "add"
+            ]); ?>" class="btn btn-success">New Quiz</a></span>
+        </h1>
     </div>
 </div>
 <div class="row">
     <table class="table table-bordered table-hover" id="dataTable">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>E-mail</th>
-                <th>Points</th>
+                <th>Question</th>
+                <th>Answer</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($users as $key => $user): ?>
+            <?php foreach ($questions as $key => $question): ?>
             <tr data-href="<?= $this->Url->build([
                 "action" => "show",
-                $user->_id
+                $question->_id
             ]); ?>">
-                <td><?= $this->Text->truncate($user->firstname . ' ' . $user->lastname, 50) ?></td>
-                <td><?= $this->Text->truncate($user->email, 50) ?></td>
-                <td><?= $user->points ?></td>
+                <td><?= $this->Text->truncate($question->question, 50) ?></td>
+                <td><?= $this->Text->truncate($question->answer, 50) ?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>
