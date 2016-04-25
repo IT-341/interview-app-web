@@ -14,3 +14,11 @@ textarea.form-control[disabled] {
 tr.not-read {
 	font-weight: bold;
 }
+
+#keywords[disabled] {
+    display: none;
+}
+
+.keywords-used {
+	margin-top: 10px;
+}
