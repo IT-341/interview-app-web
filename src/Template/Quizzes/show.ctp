@@ -1,3 +1,5 @@
+<?= $this->Html->css('//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css', ['block' => true]) ?>
+
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Show/Edit Quiz</h1>
@@ -25,6 +27,18 @@
             <input type="text" name="wrong_choices[1]" style="margin-bottom: 10px;" class="form-control"  disabled value="<?= $question->wrong_choices[1] ?>">
             <input type="text" name="wrong_choices[2]" class="form-control"  disabled value="<?= $question->wrong_choices[2] ?>">
         </div>
+        <div class="form-group">
+            <label>Keywords</label>
+            <input type="text" name="keywords" class="form-control" id="keywords" disabled>
+            <div class="keywords-used">
+                <?php foreach ($question->keywords as $key => $keyword): ?>
+                <button type="button" class="btn btn-info btn-xs">
+                    <?= $keyword->name ?> <i class="fa fa-times"></i>
+                    <input type="hidden" name="keywords[]" value="<?= $keyword->_id ?>">
+                </button>
+                <?php endforeach; ?>
+            </div>
+        </div>
         <div class="show-buttons">
             <button type="button" id="btnEdit" class="btn btn-primary">Edit</button>
             <a href="<?= $this->Url->build([
@@ -40,4 +54,6 @@
     <?php endif; ?>
 </div>
 
+<?= $this->Html->script('//code.jquery.com/ui/1.11.4/jquery-ui.js', ['block' => true]) ?>
+<?= $this->Html->script('autocomplete-keywords.js', ['block' => true]) ?>
 <?= $this->Html->script('buttons-handlers', ['block' => true]) ?>

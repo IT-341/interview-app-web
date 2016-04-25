@@ -7,9 +7,10 @@ class KeywordsController extends AppController
     {
         $keywords = $this->JIPAApi->get([
             'resource' => 'keyword',
+            'select'   => ['name']
         ]);
 
-    	$this->set(['keywords' => $keywords]);
+    	  $this->set(['keywords' => $keywords]);
     }
 
     public function add() {}
@@ -85,5 +86,26 @@ class KeywordsController extends AppController
 
         $this->Flash->error('Failed to delete the keyword.');
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function get()
+    {
+        if (!$this->request->is('ajax')) {
+            return $this->redirect(['action' => 'index']);
+        }
+
+        $response = $this->JIPAApi->get([
+            'resource' => 'keyword',
+            'select'   => ['name']
+        ]);
+
+        foreach ($response as $key => $keyword) {
+            $keywords[$key]['id']    = $keyword->_id;
+            $keywords[$key]['label'] = $keyword->name;
+            $keywords[$key]['value'] = $keyword->name;
+        }
+
+        $this->response->body(json_encode($keywords));
+        return $this->response;
     }
 }

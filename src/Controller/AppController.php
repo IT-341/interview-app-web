@@ -49,4 +49,17 @@ class AppController extends Controller
             ]
         ]);
     }
+
+    protected function removeDuplicateKeywords($keywords = array())
+    {
+        $notDuplicatedKeywords = array();
+
+        foreach ($keywords as $keyword) {
+            if (!in_array($keyword, $notDuplicatedKeywords)) {
+                $notDuplicatedKeywords[] = $keyword;
+            }
+        }
+
+        return $notDuplicatedKeywords;
+    }
 }

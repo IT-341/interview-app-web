@@ -24,6 +24,9 @@ class QuizzesController extends AppController
 
         $this->request->data['quiz'] = true;
 
+        $this->request->data['keywords'] =
+            $this->removeDuplicateKeywords($this->request->data['keywords']);
+
         $response = $this->JIPAApi->post([
             'resource' => 'question'
         ], $this->request->data);
@@ -45,7 +48,8 @@ class QuizzesController extends AppController
 
         $question = $this->JIPAApi->get([
             'resource' => 'question',
-            'id'       => $id
+            'id'       => $id,
+            'populate' => 'keywords'
         ]);
 
         $this->set(['question' => $question]);
@@ -56,6 +60,9 @@ class QuizzesController extends AppController
         if ($id == null || !$this->request->is('post')) {
             return $this->redirect(['action' => 'index']);
         }
+
+        $this->request->data['keywords'] =
+            $this->removeDuplicateKeywords($this->request->data['keywords']);
 
         $response = $this->JIPAApi->put([
             'resource' => 'question',
