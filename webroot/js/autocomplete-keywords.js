@@ -34,9 +34,7 @@ function closeHandler(event, ui) {
 }
 
 function removeKeyword(e) {
-  var isEdit = !$('.edit-buttons').length || $('.edit-buttons').is(':visible');
-
-  if (isEdit && confirm('Are you sure you want to delete?')) {
+  if (confirm('Are you sure you want to delete?')) {
     $(e.currentTarget).remove();
   }
 }

@@ -7,13 +7,13 @@ $(document).ready(function() {
 function editHandler() {
 	$('.show-buttons').hide();
 	$('.edit-buttons').show();
-	$('.form-control').removeAttr('disabled');
+	$('.form-control, .keywords-used button').removeAttr('disabled');
 }
 
 function cancelHandler() {
 	$('.show-buttons').show();
 	$('.edit-buttons').hide();
-	$('.form-control').attr('disabled', true);
+	$('.form-control, .keywords-used button').attr('disabled', true);
 }
 
 function deleteHandler() {

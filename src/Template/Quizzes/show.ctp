@@ -32,7 +32,7 @@
             <input type="text" name="keywords" class="form-control" id="keywords" disabled>
             <div class="keywords-used">
                 <?php foreach ($question->keywords as $key => $keyword): ?>
-                <button type="button" class="btn btn-info btn-xs">
+                <button type="button" class="btn btn-info btn-xs" disabled="disabled">
                     <?= $keyword->name ?> <i class="fa fa-times"></i>
                     <input type="hidden" name="keywords[]" value="<?= $keyword->_id ?>">
                 </button>
