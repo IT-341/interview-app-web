@@ -42,8 +42,8 @@ class JIPAApiComponent extends Component
     {
         $response = $this->http->post(
             $this->buildUrl($config),
-            $data,
-            ['headers' => ['Content-Type' => 'x-www-form-urlencoded']]
+            json_encode($data),
+            ['headers' => ['Content-Type' => 'application/json']]
         );
 
         return $response->code == '201';
@@ -59,8 +59,8 @@ class JIPAApiComponent extends Component
     {
         $response = $this->http->put(
             $this->buildUrl($config),
-            $data,
-            ['headers' => ['Content-Type' => 'x-www-form-urlencoded']]
+            json_encode($data),
+            ['headers' => ['Content-Type' => 'application/json']]
         );
 
         return $response->isOk();

@@ -52,6 +52,10 @@ class AppController extends Controller
 
     protected function removeDuplicateKeywords($keywords = array())
     {
+        if (empty($keywords)) {
+            return array();
+        }
+
         $notDuplicatedKeywords = array();
 
         foreach ($keywords as $keyword) {
