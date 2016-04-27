@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-sm-12">
         <h1 class="page-header">
-            Feedback <?= (true) ? 'Done' : (false) ? 'Read' : 'Unread' ?>
+            Feedback
         </h1>
     </div>
 </div>
