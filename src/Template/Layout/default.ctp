@@ -39,7 +39,7 @@
                 </button>
                 <a class="navbar-brand" href="<?= $this->Url->build([
                     "controller" => "Pages",
-                    "action" => "dashboar"
+                    "action" => "dashboard"
                 ]); ?>">JIPA - Control Panel</a>
             </div>
             <!-- /.navbar-header -->
