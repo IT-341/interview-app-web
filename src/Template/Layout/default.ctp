@@ -37,7 +37,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">JIPA - Control Panel</a>
+                <a class="navbar-brand" href="<?= $this->Url->build([
+                    "controller" => "Pages",
+                    "action" => "dashboar"
+                ]); ?>">JIPA - Control Panel</a>
             </div>
             <!-- /.navbar-header -->
 
